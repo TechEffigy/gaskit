@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Gaskit
+
+## Description
+
+Location based Question and Answers web app.
+
+## Status
+
+Beginning stages
+
 ## Available Scripts
 
 In the project directory, you can run:
