@@ -10,7 +10,7 @@ export default props => {
 
   useEffect(() => {
     const unsub = fireDb.getReplies(props.id, data => {
-      setAnswers(data, ...answers);
+      setAnswers([...data]);
     });
 
     return () => unsub();

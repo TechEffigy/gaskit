@@ -1,4 +1,5 @@
 .cortex {
+  position: relative;
   padding: 1rem;
   margin: 1rem 1rem;
   border: 1px solid #ccc;
@@ -9,5 +10,6 @@
 }
 
 .askbtn {
-  margin-left: -5%;
+  position: absolute;
+  right: 5%;
 }
