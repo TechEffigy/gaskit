@@ -10,6 +10,7 @@ export default props => {
 
   const clickHandler = () => {
     fireDb.storeReply(props.questionId, reply);
+    setReply("");
   };
 
   return (

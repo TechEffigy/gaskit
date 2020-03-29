@@ -12,7 +12,8 @@ export default props => {
     const unsub = fireDb.getReplies(props.id, data => {
       setAnswers(data, ...answers);
     });
-    console.log(unsub);
+
+    return unsub();
   }, []);
 
   return (
