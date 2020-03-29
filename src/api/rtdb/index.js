@@ -44,7 +44,7 @@ export default class {
     const geoFire = new GeoFire(geoRef);
     try {
       const newQuestionRef = this.database.ref("questions").push();
-      await newQuestionRef.set({ question: question });
+      await newQuestionRef.set({ timestamp: Date.now(), question: question });
       await geoFire.set(newQuestionRef.key, location);
     } catch (err) {
       console.log(err);
@@ -54,18 +54,21 @@ export default class {
   async storeReply(questionId, reply) {
     try {
       const newReplyRef = this.database.ref(`replies/${questionId}`).push();
-      await newReplyRef.set({ reply });
+      await newReplyRef.set({ timestamp: Date.now(), reply: reply });
     } catch (err) {
       console.log(err);
     }
   }
 
   getReplies(questionId, cbfunc) {
-    const dbRef = this.database.ref(`replies/${questionId}`).limitToLast(3);
+    const dbRef = this.database
+      .ref(`replies/${questionId}`)
+      .orderByChild("timestamp")
+      .limitToLast(4);
     dbRef.on("value", snapshot => {
       let data = [];
       snapshot.forEach(item => {
-        data = [...data, { id: item.key, reply: item.val().reply }];
+        data = [{ id: item.key, reply: item.val().reply }, ...data];
       });
       console.log(data);
       cbfunc(data);

@@ -6,7 +6,7 @@ header {
   margin-bottom: 1.5rem;
 }
 .cortex {
-  display: flex;
+  position: relative;
 }
 
 h1 {
@@ -15,9 +15,12 @@ h1 {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 3rem;
   font-style: oblique;
+  padding-left: 4.5rem;
 }
 
 .logo {
+  position: absolute;
+  bottom: 0px;
   height: 3.5rem;
   margin-right: 0.5rem;
 }

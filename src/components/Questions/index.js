@@ -24,7 +24,7 @@ export default props => {
   const fireDb = useContext(FireDbContext);
 
   useEffect(() => {
-    const unsubscibe = fireDb.subscribeToQuestions(userLoc, 5, question => {
+    const unsubscibe = fireDb.subscribeToQuestions(userLoc, 25, question => {
       dispatch({ type: "ADD_QUESTION", payload: question });
     });
 
