@@ -13,7 +13,7 @@ export default props => {
       setAnswers(data, ...answers);
     });
 
-    return unsub();
+    return () => unsub();
   }, []);
 
   return (
