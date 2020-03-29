@@ -9,18 +9,20 @@ export default props => {
   const fireDb = useContext(FireDbContext);
 
   useEffect(() => {
-    fireDb.getReplies(props.id).then(data => {
-      setAnswers(data);
+    fireDb.getReplies(props.id, data => {
+      setAnswers(data, ...answers);
     });
   }, []);
 
   return (
     <div className={styles.cortex}>
-      {answers.map(item => (
-        <div className={styles.answer}>
-          <p key={item.id}>{item.reply}</p>
-        </div>
-      ))}
+      {console.log(answers)}
+      {answers.length > 0 &&
+        answers.map(item => (
+          <div className={styles.answer}>
+            <p key={item.id}>{item.reply}</p>
+          </div>
+        ))}
       <a href="#" className={styles.readmore}>
         Read more...
       </a>

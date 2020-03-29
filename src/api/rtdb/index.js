@@ -59,27 +59,14 @@ export default class {
       console.log(err);
     }
   }
-  // getQuestion(id) {
-  //   return new Promise((res, rej) => {
-  //     this.database
-  //       .ref(`questions/${id}`)
-  //       .once("value")
-  //       .then(snapshot => {
-  //         res({ id: snapshot.key, question: snapshot.val().question });
-  //       })
-  //       .catch(err => rej(err));
-  //   });
-  // }
-  async getReplies(questionId) {
-    return new Promise((res, rej) => {
-      this.database.ref(`replies/${questionId}`).on("value", snapshot => {
-        let data = [];
-        snapshot.forEach(item => {
-          console.log(item.val());
-          data = [...data, { id: item.key, reply: item.val().reply }];
-        });
-        res(data);
+
+  async getReplies(questionId, cbfunc) {
+    this.database.ref(`replies/${questionId}`).on("value", snapshot => {
+      let data = [];
+      snapshot.forEach(item => {
+        data = [...data, { id: item.key, reply: item.val().reply }];
       });
+      cbfunc(data);
     });
   }
 }
