@@ -32,13 +32,15 @@ export default props => {
   }, [userLoc]);
 
   return (
-    <div className={styles.cortex}>
-      {questions.map(item => (
-        <div key={item.id} className={styles.item}>
-          <Question id={item.id} question={item.question} />
-          <Answers id={item.id} />
-        </div>
-      ))}
-    </div>
+    questions.length > 0 && (
+      <div className={styles.cortex}>
+        {questions.map(item => (
+          <div key={item.id} className={styles.item}>
+            <Question id={item.id} question={item.question} />
+            <Answers id={item.id} />
+          </div>
+        ))}
+      </div>
+    )
   );
 };

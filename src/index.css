@@ -33,6 +33,7 @@ button {
   background-color: none;
   border: 1px solid #ccc;
   border-radius: 16px;
+  cursor: pointer;
 }
 
 button:focus {

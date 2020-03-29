@@ -13,3 +13,9 @@
   position: absolute;
   right: 5%;
 }
+
+@media only screen and (max-width: 460px) {
+  .cortex {
+    border: 0;
+  }
+}

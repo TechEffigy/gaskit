@@ -8,3 +8,9 @@
   padding: 0.5rem;
   border: 1px solid #ccc;
 }
+
+@media only screen and (max-width: 460px) {
+  .cortex {
+    border: 0;
+  }
+}
