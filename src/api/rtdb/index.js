@@ -60,13 +60,15 @@ export default class {
     }
   }
 
-  async getReplies(questionId, cbfunc) {
-    this.database.ref(`replies/${questionId}`).on("value", snapshot => {
+  getReplies(questionId, cbfunc) {
+    const dbRef = this.database.ref(`replies/${questionId}`);
+    dbRef.on("value", snapshot => {
       let data = [];
       snapshot.forEach(item => {
         data = [...data, { id: item.key, reply: item.val().reply }];
       });
       cbfunc(data);
     });
+    return () => dbRef.off();
   }
 }
