@@ -1,0 +1,23 @@
+.cortex {
+}
+
+.answer {
+  margin-left: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.readmore {
+  display: block;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  color: #777;
+}
+
+.readmore:hover {
+  background-color: steelblue;
+  color: white;
+}

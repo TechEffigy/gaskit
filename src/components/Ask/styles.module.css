@@ -1,0 +1,13 @@
+.cortex {
+  padding: 1rem;
+  margin: 1rem 1rem;
+  border: 1px solid #ccc;
+}
+
+.askbox {
+  width: 95%;
+}
+
+.askbtn {
+  margin-left: -5%;
+}
