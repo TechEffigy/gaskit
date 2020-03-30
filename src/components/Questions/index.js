@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useReducer } from "react";
+import React, { useEffect, useContext, useState } from "react";
 
 import Question from "./../Question";
 import Answers from "./../Answers";
@@ -19,7 +19,7 @@ const questionReducer = (state, action) => {
 };
 
 export default props => {
-  const [questions, dispatch] = useReducer(questionReducer, []);
+  const [questions, setQuestions] = useState([]);
   const appState = useContext(AppStateContext);
   const api = useContext(ApiContext);
 
@@ -29,7 +29,8 @@ export default props => {
         appState.client.location,
         25,
         question => {
-          dispatch({ type: "ADD_QUESTION", payload: question });
+          // dispatch({ type: "ADD_QUESTION", payload: question });
+          setQuestions(prevState => [question, ...prevState]);
         }
       );
 

@@ -1,16 +1,5 @@
 import { useEffect, useReducer, useContext, createContext } from "react";
 
-const getGeoLoc = cb => {
-  navigator.geolocation.getCurrentPosition(
-    res => {
-      cb(res);
-    },
-    err => {
-      console.log(err);
-    }
-  );
-};
-
 const initAppState = {
   user: {
     isAuthed: false,
@@ -42,7 +31,6 @@ export const useAppState = api => {
   useEffect(() => {
     doClientLocation(appStateDispatcher);
     const unsub = doSubscribeAuth(appStateDispatcher, api);
-
     return () => unsub();
   }, []);
 
@@ -69,12 +57,17 @@ const doSubscribeAuth = (dispatch, api) => {
 };
 
 const doClientLocation = dispatch => {
-  getGeoLoc(loc => {
-    dispatch({
-      type: "UPDATE_LOCATION",
-      payload: [loc.coords.latitude, loc.coords.longitude]
-    });
-  });
+  navigator.geolocation.getCurrentPosition(
+    loc => {
+      dispatch({
+        type: "UPDATE_LOCATION",
+        payload: [loc.coords.latitude, loc.coords.longitude]
+      });
+    },
+    err => {
+      console.log(err);
+    }
+  );
 };
 
 export const AppStateContext = createContext();
