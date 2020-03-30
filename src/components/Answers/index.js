@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 
-import { FireDbContext } from "../../api/rtdb";
+import { ApiContext } from "../../api";
 
 import styles from "./styles.module.css";
 
 export default props => {
   const [answers, setAnswers] = useState([]);
-  const fireDb = useContext(FireDbContext);
+  const api = useContext(ApiContext);
 
   useEffect(() => {
-    const unsub = fireDb.getReplies(props.id, data => {
+    const unsub = api.db.getReplies(props.id, data => {
       setAnswers([...data]);
     });
 

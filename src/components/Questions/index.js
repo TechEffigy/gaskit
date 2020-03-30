@@ -3,8 +3,8 @@ import React, { useEffect, useContext, useReducer } from "react";
 import Question from "./../Question";
 import Answers from "./../Answers";
 
-import UserLocation from "../../context/UserLocation";
-import { FireDbContext } from "../../api/rtdb";
+import { AppStateContext } from "../../reducers/app";
+import { ApiContext } from "../../api";
 
 import styles from "./styles.module.css";
 
@@ -20,16 +20,22 @@ const questionReducer = (state, action) => {
 
 export default props => {
   const [questions, dispatch] = useReducer(questionReducer, []);
-  const userLoc = useContext(UserLocation);
-  const fireDb = useContext(FireDbContext);
+  const appState = useContext(AppStateContext);
+  const api = useContext(ApiContext);
 
   useEffect(() => {
-    const unsubscibe = fireDb.subscribeToQuestions(userLoc, 25, question => {
-      dispatch({ type: "ADD_QUESTION", payload: question });
-    });
+    if (appState.client.location) {
+      const unsubscibe = api.db.subscribeToQuestions(
+        appState.client.location,
+        25,
+        question => {
+          dispatch({ type: "ADD_QUESTION", payload: question });
+        }
+      );
 
-    return () => unsubscibe();
-  }, [userLoc]);
+      return () => unsubscibe();
+    }
+  }, [appState.client.location]);
 
   return (
     questions.length > 0 && (

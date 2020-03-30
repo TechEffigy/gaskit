@@ -5,13 +5,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "typeface-roboto";
 
-import FireDb, { FireDbContext } from "./api/rtdb";
+import api, { ApiContext } from "./api";
 
 ReactDOM.render(
   <React.StrictMode>
-    <FireDbContext.Provider value={new FireDb()}>
+    <ApiContext.Provider value={api}>
       <App />
-    </FireDbContext.Provider>
+    </ApiContext.Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

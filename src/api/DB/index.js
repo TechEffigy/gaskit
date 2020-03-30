@@ -1,12 +1,8 @@
-import firebase from "../../services/firebase";
 import { GeoFire } from "geofire";
-import { createContext } from "react";
-
-export const FireDbContext = createContext();
 
 export default class {
-  constructor() {
-    this.database = firebase.database();
+  constructor(firebaseApp) {
+    this.database = firebaseApp.database();
   }
 
   getQuestion(id) {
@@ -70,7 +66,7 @@ export default class {
       snapshot.forEach(item => {
         data = [{ id: item.key, reply: item.val().reply }, ...data];
       });
-      console.log(data);
+
       cbfunc(data);
     });
     return () => dbRef.off();

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 
-import UserLocation from "../../context/UserLocation";
-import { FireDbContext } from "../../api/rtdb";
+import { AppStateContext } from "../../reducers/app";
+import { ApiContext } from "../../api";
 
 import styles from "./styles.module.css";
 /*
@@ -11,17 +11,22 @@ import styles from "./styles.module.css";
 */
 
 export default props => {
+  const appState = useContext(AppStateContext);
+  const api = useContext(ApiContext);
   const [question, setQuestion] = useState("");
-  const userLoc = useContext(UserLocation);
-  const fireDb = useContext(FireDbContext);
 
   const handleSave = () => {
-    fireDb.storeQuestion(question, userLoc);
+    api.db.storeQuestion(question, appState.client.location);
     setQuestion("");
   };
 
   return (
     <div className={styles.cortex}>
+      <img
+        className={styles.profilewin}
+        src={appState.user.photoURL}
+        alt="profile"
+      ></img>
       <input
         className={styles.askbox}
         type="text"

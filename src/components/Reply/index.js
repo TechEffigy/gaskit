@@ -1,15 +1,15 @@
 import React, { useState, useContext } from "react";
 
-import { FireDbContext } from "../../api/rtdb";
+import { ApiContext } from "../../api";
 
 import styles from "./styles.module.css";
 
 export default props => {
   const [reply, setReply] = useState("");
-  const fireDb = useContext(FireDbContext);
+  const api = useContext(ApiContext);
 
   const clickHandler = () => {
-    fireDb.storeReply(props.questionId, reply);
+    api.db.storeReply(props.questionId, reply);
     setReply("");
   };
 
