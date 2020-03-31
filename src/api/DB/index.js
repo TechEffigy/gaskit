@@ -29,7 +29,9 @@ export default class {
     const unsubscribe = geoQ.on("key_entered", (id, loc, dist) => {
       this.getQuestion(id)
         .then(question => cbFunc(question))
-        .catch(err => console.log(err));
+        .catch(err => {
+          throw new Error(err);
+        });
     });
 
     return unsubscribe._cancelCallback;
@@ -43,7 +45,7 @@ export default class {
       await newQuestionRef.set({ timestamp: Date.now(), question: question });
       await geoFire.set(newQuestionRef.key, location);
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
   }
 

@@ -1,10 +1,3 @@
-header {
-  background-color: #f7751f;
-  padding: 1rem;
-  color: white;
-  box-shadow: 2px 2px 6px #ccc;
-  margin-bottom: 1.5rem;
-}
 .cortex {
   display: flex;
 }
@@ -12,34 +5,35 @@ header {
 .logocortex {
   flex-grow: 1;
   display: flex;
-  align-items: center;
-}
-
-.logotext {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 3rem;
-  font-style: oblique;
 }
 
 .logo {
-  height: 3.5rem;
-  margin-right: 0.5rem;
+  width: 64px;
+}
+
+.logotext {
+  display: inline-block;
+  margin-left: 0.5rem;
 }
 
 .authcortex {
+  align-self: flex-start;
 }
 
-.authbutton {
-  background: 0;
-  border-width: 1px;
-  border-color: #ffffff;
-  color: white;
-}
-
-@media only screen and (max-width: 460px) {
-  .logo {
+@media only screen and (max-width: 500px) {
+  .cortex {
+    flex-direction: column;
+    align-items: center;
   }
-  .logotext {
+  .authcortex {
+    margin-top: 0.5rem;
+    align-self: center;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .logocortex {
+    flex-direction: column;
+    align-items: center;
   }
 }

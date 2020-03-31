@@ -8,20 +8,11 @@ import { ApiContext } from "../../api";
 
 import styles from "./styles.module.css";
 
-const questionReducer = (state, action) => {
-  switch (action.type) {
-    case "ADD_QUESTION": {
-      return [action.payload, ...state];
-    }
-    default:
-      throw new Error();
-  }
-};
-
 export default props => {
-  const [questions, setQuestions] = useState([]);
   const appState = useContext(AppStateContext);
   const api = useContext(ApiContext);
+
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     if (appState.client.location) {
@@ -29,7 +20,6 @@ export default props => {
         appState.client.location,
         25,
         question => {
-          // dispatch({ type: "ADD_QUESTION", payload: question });
           setQuestions(prevState => [question, ...prevState]);
         }
       );

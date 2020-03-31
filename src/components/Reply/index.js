@@ -23,7 +23,7 @@ export default props => {
         onChange={e => setReply(e.target.value)}
       />
       <button
-        className={styles.replybtn}
+        className={`${styles.replybtn} --secondary`}
         value="Reply"
         onClick={() => clickHandler()}
       >

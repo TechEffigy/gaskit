@@ -1,0 +1,29 @@
+@import "vars", "colors";
+
+#wrapper {
+  width: 90%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-bottom: 0.5rem;
+}
+
+#header {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#main {
+  margin: 1rem 2rem;
+}
+
+@media only screen and (max-width: $mq-med) {
+  #wrapper {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: $mq-sml) {
+  #main {
+    margin: 1rem 0rem;
+  }
+}

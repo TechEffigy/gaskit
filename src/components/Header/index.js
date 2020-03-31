@@ -13,29 +13,30 @@ export default props => {
 
   const ifNotAuth = (
     <button
-      className={styles.authbutton}
+      className={`${styles.authbutton} --onprimary`}
       onClick={() => appApi.auth.signinGoogle()}
     >
       Google Sign-in
     </button>
   );
   const ifAuth = (
-    <button className={styles.authbutton} onClick={() => appApi.auth.signOut()}>
+    <button
+      className={`${styles.authbutton} --onprimary`}
+      onClick={() => appApi.auth.signOut()}
+    >
       Logout
     </button>
   );
 
   return (
-    <header>
-      <div className={styles.cortex}>
-        <div className={styles.logocortex}>
-          <img className={styles.logo} src={logo} alt="logo" />
-          <h1 className={styles.logotext}>Gaskit</h1>
-        </div>
-        <div className={styles.authcortex}>
-          {appState.user.isAuthed ? ifAuth : ifNotAuth}
-        </div>
+    <div className={styles.cortex}>
+      <div className={styles.logocortex}>
+        <img className={styles.logo} src={logo} alt="logo" />
+        <h1 className={styles.logotext}>Gaskit</h1>
       </div>
-    </header>
+      <div className={styles.authcortex}>
+        {appState.user.isAuthed ? ifAuth : ifNotAuth}
+      </div>
+    </div>
   );
 };

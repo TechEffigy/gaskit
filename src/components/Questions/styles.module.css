@@ -1,16 +1,11 @@
 .cortex {
-  border: 1px solid #ccc;
-  margin: 1rem;
+  border: 1px solid #eee;
+  padding: 1rem;
 }
 
 .item {
-  margin: 1rem;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
   padding: 0.5rem;
-  border: 1px solid #ccc;
-}
-
-@media only screen and (max-width: 460px) {
-  .cortex {
-    border: 0;
-  }
+  box-shadow: 2px 2px 3px #eee;
 }

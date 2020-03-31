@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import Questions from "./components/Questions";
 import Ask from "./components/Ask";
 
-import "./App.css";
+import "./App.scss";
 
 const App = () => {
   const api = useContext(ApiContext);
@@ -14,10 +14,12 @@ const App = () => {
 
   return (
     <AppStateContext.Provider value={appState}>
-      <div className="cortex">
-        <Header />
-        <Ask />
-        <main>
+      <div id="wrapper">
+        <header id="header">
+          <Header />
+        </header>
+        <main id="main">
+          <Ask />
           <Questions />
         </main>
       </div>

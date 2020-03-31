@@ -24,7 +24,7 @@ export default props => {
   return (
     <div className={styles.cortex}>
       <img
-        className={styles.profilewin}
+        className={styles.profilepic}
         src={appState.user.photoURL}
         alt="profile"
       ></img>

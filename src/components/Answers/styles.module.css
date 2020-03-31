@@ -2,23 +2,13 @@
 }
 
 .answer {
-  margin-left: 0.5rem;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
+  margin: 1rem 0.5rem 0.5rem 2rem;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-left: 3px solid #f7751f;
+  border-left: 6px solid steelblue;
 }
 
 .readmore {
   display: block;
-  text-align: center;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  color: #1f7df7;
-}
-
-.readmore:hover {
-  background-color: steelblue;
-  color: white;
+  text-align: right;
 }

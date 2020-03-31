@@ -19,6 +19,5 @@ export default class {
 
   signOut() {
     this.auth.signOut();
-    console.log("signed Out");
   }
 }

@@ -31,6 +31,7 @@ export const useAppState = api => {
   useEffect(() => {
     doClientLocation(appStateDispatcher);
     const unsub = doSubscribeAuth(appStateDispatcher, api);
+
     return () => unsub();
   }, []);
 
@@ -65,7 +66,7 @@ const doClientLocation = dispatch => {
       });
     },
     err => {
-      console.log(err);
+      throw new Error(err);
     }
   );
 };
